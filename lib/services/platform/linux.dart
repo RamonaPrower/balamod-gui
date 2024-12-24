@@ -27,14 +27,12 @@ class BalatroFinder extends PlatformFinder {
   @override
   Future<Directory> getBalatroSaveDirectory() async {
     final homeDir = '${Platform.environment['HOME']}';
-    return Directory(
-        final flatpakSavePath = '$homeDir/.var/app/com.valvesoftware.Steam/.local/share/Steam/steamapps/compatdata/2379780/pfx/drive_c/users/steamuser/AppData/Roaming/Balatro';
-        final defaultSavePath = '$homeDir/.local/share/Steam/steamapps/compatdata/2379780/pfx/drive_c/users/steamuser/AppData/Roaming/Balatro';
-
-        if (await Directory(flatpakSavePath).exists()) {
-          return Directory(flatpakSavePath);
-        }
-        return Directory(defaultSavePath);
+    final flatpakSavePath = '$homeDir/.var/app/com.valvesoftware.Steam/.local/share/Steam/steamapps/compatdata/2379780/pfx/drive_c/users/steamuser/AppData/Roaming/Balatro';
+    final defaultSavePath = '$homeDir/.local/share/Steam/steamapps/compatdata/2379780/pfx/drive_c/users/steamuser/AppData/Roaming/Balatro';
+    if (await Directory(flatpakSavePath).exists()) {
+      return Directory(flatpakSavePath);
+    }
+    return Directory(defaultSavePath);
   }
 
   @override
